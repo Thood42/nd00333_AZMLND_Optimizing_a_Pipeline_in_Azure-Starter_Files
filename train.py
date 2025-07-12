@@ -10,6 +10,7 @@ import os
 import argparse
 from sklearn.linear_model import LogisticRegression
 
+
 def clean_data(data):
     # Dict for cleaning data
     months = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
@@ -77,6 +78,12 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
+
+    # Added Section to save the model as joblib file for later use
+    model_path = os.path.join("outputs", "model.joblib")
+    os.makedirs(os.path.dirname("outputs"), exist_ok=True)
+    joblib.dump(model, model_path)
+    run.log("Model saved", True)
 
 
 if __name__ == '__main__':
