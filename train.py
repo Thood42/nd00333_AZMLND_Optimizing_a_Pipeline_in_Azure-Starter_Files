@@ -80,8 +80,7 @@ def main():
     run.log("Accuracy", np.float(accuracy))
 
     # Added Section to save the model as joblib file for later use
-    model_path = os.path.join("outputs", "model.joblib")
-    os.makedirs(os.path.dirname("outputs"), exist_ok=True)
+    model_path = 'outputs/model.joblib'
     joblib.dump(model, model_path)
     run.log("Model saved", True)
 
